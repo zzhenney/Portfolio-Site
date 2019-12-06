@@ -25,19 +25,19 @@ strong, b {
 }
 
 #header{
-    
-    display: flex;
-    justify-content: center; /* align horizontal */
-    align-items: center; /* align vertical */
-    height: 950px;
+    height: 90vh;
     width: 100%;
-    background-color: #f3f2f2;  
-    font-family: 'Lobster', cursive;
-    
+    /*background:#f3f2f2;*/
+    background: white;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 80px;
 }
 
-
+.intro {
+    position: absolute;
+    top: 30%;
+    left: 10%
+}
     
 .center-content {
     margin: auto;
@@ -48,18 +48,16 @@ strong, b {
 /*FOLD CONTACT*/
 
 #contact{
-    display:;
-    top: 50%;
-    left: 5%;
-    text-align: center;
-    width:240px;
+    top: 60%;
+    left: 30%;
+    text-align: left;
     z-index: 0;
-    height:200px; 
-    background:#f3f2f2;
+    height:500px; 
     overflow: 'hidden';
     
 }
 .links{
+    align-items: center;
     list-style-type: none;
     margin: 0;
     display: inline-block;
@@ -118,41 +116,32 @@ nav li{
     
 }
 */
-
-.navlinks a:link{
-    color:  red;
-    cursor: pointer;
+.nav-item {
+    margin: 0;
+}
+.nav-link {
+    margin: 0 auto;
 }
 
-.navlinks a:active{
-    
-    color: red;
-}
-.navlinks a:hover{
-    
-    color: #ff5d73;
-    
+a.nav-link {
+    color: black;
 }
 
-.nav-link a:link{
-    color:  red;
-    cursor: pointer;
+a.nav-link.active {
+    color: #00a8ff;
 }
 
-.nav-link a:active{
-    
-    color: red;
-}
-.nav-link a:hover{
-    
-    color: #ff5d73;
-    
+.name {
+    color: #00a8ff;
 }
 
-
+nav {
+    background: white;
+}
 
 .navbar-nav.navbar-center {
     position: relative;
+    background: white;
     left: 50%;
     transform: translate(-50%);
 
@@ -180,7 +169,7 @@ h1.sectitle{
     margin-bottom: 3%;
     max-width: 640px;
     font-size: 36px;
-    font-family: 'Lobster', cursive;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     
 }
 
@@ -217,67 +206,6 @@ li{
     
     
 }
-
-#projects a:link    {
-  /* Applies to all unvisited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  cursor: pointer;
-  color:            white;
-  } 
-#projects a:visited {
-  /* Applies to all visited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  
-  color:            white;
-  } 
-#projects a:hover   {
-  /* Applies to links under the pointer */
-  text-decoration:  none;
-  font-weight:      bold;
-  cursor: pointer;
-  color:            lightgray;
-  } 
-#projects a:active  {
-  /* Applies to activated links */
-  text-decoration:  none;
-  font-weight:      bold;
-  
-  color: white;
-  } 
-
-
-
-
-a:link    {
-  /* Applies to all unvisited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  cursor: pointer;
-  color:            red;
-  } 
-a:visited {
-  /* Applies to all visited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  
-  color:            red;
-  } 
-a:hover   {
-  /* Applies to links under the pointer */
-  text-decoration:  none;
-  font-weight:      bold;
-  cursor: pointer;
-  color:            red;
-  } 
-a:active  {
-  /* Applies to activated links */
-  text-decoration:  none;
-  font-weight:      bold;
-  
-  color: red;
-  } 
 
 
 /* Style the Image Used to Trigger the Modal */
