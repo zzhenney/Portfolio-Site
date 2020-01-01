@@ -31,12 +31,16 @@ strong, b {
     background: white;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 80px;
+    margin: 0 auto;
+    align-content: center;
+    
 }
 
 .intro {
-    position: absolute;
-    top: 30%;
-    left: 10%
+    margin: auto;
+    max-width: 640px;
+    padding-top: 20%;
+    
 }
     
 .center-content {
@@ -47,12 +51,11 @@ strong, b {
 
 /*FOLD CONTACT*/
 
-#contact{
-    top: 60%;
-    left: 30%;
-    text-align: left;
+.contact{
+    position: relative;
+    text-align: center;
     z-index: 0;
-    height:500px; 
+    height: 85vh; 
     overflow: 'hidden';
     
 }
@@ -62,18 +65,32 @@ strong, b {
     margin: 0;
     display: inline-block;
     padding: 0px;
+    
 }
 .lilinks{
-    display: inline-block;
     margin: auto;
+    vertical-align: middle;
 }
 
 .lilinks a {
-    
-    color: red;
-    
-    
+    text-align: center;
+    color: black;
+    font-size: 20px;    
     text-decoration: none;
+    vertical-align: middle;
+}
+
+.center {
+    text-align: center;
+}
+
+.footer {
+    height: 60px;
+
+}
+
+.space {
+    height: 400px;
 }
 
 /* position: sticky; */
