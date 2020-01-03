@@ -37,9 +37,10 @@ strong, b {
 }
 
 .intro {
+    position: relative;
     margin: auto;
     max-width: 640px;
-    padding-top: 20%;
+    top: 30%
     
 }
     
