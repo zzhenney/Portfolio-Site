@@ -19,8 +19,10 @@ and open the template in the editor.
         <title>Zac Henney</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stylesheets/style.css">
+        
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
+        
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
         
@@ -41,22 +43,19 @@ and open the template in the editor.
         </div>  
 
         <nav class="navbar navbar-expand-sm sticky-top"> 
-
-        <ul class="navbar-nav navbar-center">
-            <li class="nav-item navlinks">
-                <a class="nav-link" href="#portfolio">Portfolio</a>
-            </li>
-            <h4 class="nav-link">/</h4>
-            <li class="nav-item navlinks">
-                <a class="nav-link" href="#resume">Resume</a>
-            </li>
-            <h4 class="nav-link">/</h4>
-            <li class="nav-item navlinks">
-                <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            
-        </ul>
-
+            <ul class="navbar-nav navbar-center">
+                <li class="nav-item navlinks">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+                <h4 class="nav-link">/</h4>
+                <li class="nav-item navlinks">
+                    <a class="nav-link" href="#resume">Resume</a>
+                </li>
+                <h4 class="nav-link">/</h4>
+                <li class="nav-item navlinks">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>  
+            </ul>
         </nav>
         
 
@@ -71,26 +70,113 @@ and open the template in the editor.
                             <div class="card-deck">
                                 
                                 <div class="row">
-                            
-                                    <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HTTP Web Server</h5>
-                                        <p class="card-text">Implemented in Java, this multithreaded web server handles a subset of HTTP requests. Specifically, I implemented the parsing of server config files, the generation and sending of HTTP responses, and user/request authentication.  </p>
-                                        <a href="https://github.com/zzhenney/WebServer" target="_blank" class="btn btn-primary">Codebase</a>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Built with: Java, Netbeans, Postman</small>
-                                    </div>
-                                    </div>
                                 
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Web Server</h5>
+                                            <p class="card-text">Implemented in Java, this multithreaded web server handles a subset of HTTP requests. Specifically, I implemented the parsing of server config files, the generation and sending of HTTP responses, and user/request authentication.  </p>
+                                            
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="https://github.com/zzhenney/WebServer" target="_blank" class="btn btn-primary">Codebase</a>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#webserverModal">Full Description</button>
+                                        </div>
+                                    </div>
+                                    
+                            
                                 </div>
+                                
+                                <div class="modal fade" id="webserverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Inspiration</h5>
+                                                <p>
+                                                    The purpose of this project was to learn about the HyperText Transfer Protocol (HTTP) and the inner workings of web servers.
+                                                    It also provided an opportunity to practice my software development skills.
+                                                </p>
+                                                <h5>What it Does</h5>
+                                                <p>
+                                                    This web server can handle a subset of HTTP requests and responses (fig. 1). 
+                                                    The server can also handle multiple simultaneous requests via multithreading. 
+                                                    Below, is a high level overview of the web server’s features. 
+                                                    <ul>
+                                                        <li>Read, and store, standard conﬁguration ﬁles for use in responding to client requests</li>
+                                                        <li>Parse HTTP Requests</li>
+                                                        <li>Generate and send HTTP Responses</li>
+                                                        <li>Respond to multiple simultaneous requests through the use of threads</li>
+                                                        <li>Execute server side processes to handle server side scripts</li>
+                                                        <li>Support simple authentication</li>
+                                                        <li>Support simple caching</li>
+                                                        <li>Logging</li>
+                                                    </ul>  
+                                                </p>
+                                                <figure>
+                                                    <img src="images/req_res_table.png">
+                                                    <figcaption>fig. 1</figcaption>
+                                                    
+                                                </figure>
+                                                <h5>Implementation</h5>
+                                                <p>
+                                                    The web server was implemented in Java 8.0. Tools used during development include Netbeans IDE 8.2 and Postman 6.7.4.
+                                                </p>
+                                                <p>
+                                                    The entry point to the web server is the main method in WebServer.java. The server listens to port 8080 by default. 
+                                                    WebServer is responsible for setting its configuration via the httpd.conf and MIME.types files located in conf folder located in the server’s root directory. 
+                                                    The HttpdConf and MimeTypes classes are used by the server to load the configurations and both utilize HashMaps to store their respectful headers. 
+                                                    Each is also responsible for the parsing of their respected files. 
+                                                    Both HttpdConf and MimeTypes extend ConfigurationReader, a class used to read a file and provide scanning logic, to help in the parsing. 
+                                                </p>
+                                                <p>
+                                                    The server utilizes the ExecutorService interface to manage a fixed thread pool of 10 threads, allowing the server to handle multiple simultaneous requests. 
+                                                    The Worker class implements Runnable and is passed to the fixed thread pool for execution. 
+                                                    The Worker expects to be passed a Socket, HttpdConf, and MimeType objects. 
+                                                    The Socket is used with Worker to facilitate communication between the client and server. 
+                                                </p>
+                                                <p>
+                                                    When WebServer receives a request, the Request class is responsible for handling the parsing and extracting the properly formatted HTTP request’s information. 
+                                                    Worker also utilizes a ResponseFactory to dynamically create a response to a request. 
+                                                    All Responses extend from an abstract Response class. 
+                                                    The Response class provides both abstract and implemented methods. 
+                                                    The ResponseFactory verifies if a resource is protected and if the resource exists and then based on the appropriate response code, generates 
+                                                    the appropriate Response to be sent to the client. 
+                                                    Once a request is sent the Logger class handles the logging of the response.
+                                                </p>
+                                                
+                                                <h5>Challenges & Issues</h5>
+                                                <p>
+                                                    During development there was an issue when parsing file paths for htaccess detection. 
+                                                    I found that the leading “/” was being removed from the path. 
+                                                    As a result the htaccess file was never detected. 
+                                                    This was caused by using Java’s Path substring method. 
+                                                    I fixed this by using Java’s Path getParent method instead.
+                                                </p>
+                                                <h5>What I learned</h5>
+                                                <p>Through this project I gained the understanding of webservers as well as HTTP</p>
+                                                <p>Initially, this seemed like a daunting project. After breaking down the problem into smaller pieces it became much more manageable.</p>
+                                                <p>Postman is a crucial tool for quickly testing APIs. Without Postman the development time for this project would have been longer. I will definitely use Postman in the future when working with APIs.</p>
+                                                <p>In my courses prior to this project we had breifly discussed design patterns. This was my first time using the Factory pattern. Being able to apply the pattern to an actual project made the concept seem less abstract. </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 <br>
                                 <div class="row">
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Movie Rank</h5>
-                                        <p class="card-text">A mobile friendly movie review site built with an emphasis on user experience. Some UX based features include returning to previous page after login, user based routing restrictions, and user profile settings.</p>
+                                        <p class="card-text">A mobile friendly movie review site built with an emphasis on user experience and database design. Some UX based features include returning to previous page after login, user based routing restrictions, and user profile settings.</p>
                                         <a href="https://github.com/zzhenney/MovieRank" target="_blank" class="btn btn-primary">Codebase</a>
+                                        <a href="https://movierank.herokuapp.com/" target="_blank" class="btn btn-info">Documentation</a>
                                         <a href="https://movierank.herokuapp.com/" target="_blank" class="btn btn-success">Live Project</a>
                                     </div>
                                     <div class="card-footer">
