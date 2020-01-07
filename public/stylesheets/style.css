@@ -218,6 +218,11 @@ ul{
 
 */
 
+iframe {
+    display: block;
+    margin: 50px auto;
+}
+
 li{
     padding: 3px;
     margin-left: 20px;
