@@ -238,7 +238,7 @@ and open the template in the editor.
                                                 </p>
                                                 <figure>
                                                     <img src="images/ERD_Final.png" width="720" height="1000">
-                                                    <figcaption>Entitry Relation Diagram (ERD)</figcaption>
+                                                    <figcaption>Entity Relation Diagram (ERD)</figcaption>
                                                     
                                                 </figure>
                                                 <figure>
@@ -274,6 +274,7 @@ and open the template in the editor.
                                             <h5 class="card-title">Magic Mirror Caltrain Module</h5>
                                             <p class="card-text">A Caltrain Module for the Magic Mirror open source project. The module provides northbound and/or southbound departure times or estimated times of departure for the selected Caltrain station.</p>
                                             <a href="https://github.com/zzhenney/MMM-Caltrain" target="_blank" class="btn btn-primary">Codebase</a>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mmmcaltrain-doc-Modal">Documentation</button>
                                             
                                         </div>
                                         <div class="card-footer">
@@ -281,6 +282,69 @@ and open the template in the editor.
                                         </div>
                                         </div>
                             
+                                </div>
+                                <div class="modal fade" id="mmmcaltrain-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Inspiration</h5>
+                                                <p>
+                                                        After creating my own smart mirror web app (see portfolio) I stumbled upon the Magic Mirror open source project. 
+                                                        I noticed that a Caltrain times module had not been created yet. 
+                                                        I saw this as a perfect opportunity to get involved in the open source community.
+                                                </p>
+                                                <h5>What it Does</h5>
+                                                <p>
+                                                        The Caltrain module provides departure times or estimated times of departure (etd) for the selected Caltrain station. 
+                                                        Northbound and Southbound times can be displayed or hidden. Caltrain data is obtained via API calls to 511.org.
+                                                        Below is a high level overview of the features. 
+                                                    <ul>
+                                                        <li>User can set station</li>
+                                                        <li>User can select northbound and/or southbound times</li>
+                                                        <li>Users can display departure time or estimated time til departure (countdown)</li>
+                                                        <li>User can display times in 24 or 12 hour</li>
+                                                    </ul>  
+
+                                                </p>
+                                                <figure>
+                                                    <img src="images/etd.png">
+                                                    <figcaption>Estimated Time til Departure</figcaption>     
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/departure_times.png">
+                                                    <figcaption>Departure Times</figcaption>
+                                                </figure>
+                                                <h5>Implementation</h5>
+                                                <p>
+                                                    Implementing the project was fairly straight forward after reading the Magic Mirror module documentation. 
+                                                    There are two main files that compose the project. 
+                                                    The first being MMM-Caltrain.js, which provides the presentation layer. 
+                                                    The second being node-helper.js, which handles the external api calls to 511.org.                                                </p>
+                                                
+                                                <h5>Challenges & Issues</h5>
+                                                <p>
+                                                    One challenge I had was dealing with UTC time conversions. 
+                                                    Initially I thought I could handle the conversions myself. 
+                                                    However, I ended up using a third party library to cut down the development time. 
+                                                    Something about not reinventing the wheel.
+                                                </p>
+                                                <h5>What I learned</h5>
+                                                <p>
+                                                    One of my biggest takeaways from this project was learning how to create and work with git submodules. 
+                                                    This was a great learning experience in working on larger projects.
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="row">
