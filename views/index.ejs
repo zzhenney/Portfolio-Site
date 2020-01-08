@@ -76,7 +76,7 @@ and open the template in the editor.
                                             <h5 class="card-title">Web Server</h5>
                                             <p class="card-text">Implemented in Java, this multithreaded web server handles a subset of HTTP requests. Specifically, I implemented the parsing of server config files, the generation and sending of HTTP responses, and user/request authentication.  </p>
                                             <a href="https://github.com/zzhenney/WebServer" target="_blank" class="btn btn-primary">Codebase</a>
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#webserverModal">Full Description</button>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#webserverModal">Documentation</button>
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">Built with: Java, Postman, and Netbeans IDE</small>
@@ -166,9 +166,9 @@ and open the template in the editor.
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
-                                          </div>
                                         </div>
-                                      </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <div class="row">
                                     <div class="card">
@@ -176,14 +176,15 @@ and open the template in the editor.
                                         <h5 class="card-title">Movie Rank</h5>
                                         <p class="card-text">A mobile friendly movie review site built with an emphasis on user experience and database design. Some UX based features include returning to previous page after login, user based routing restrictions, and user profile settings.</p>
                                         <a href="https://github.com/zzhenney/MovieRank" target="_blank" class="btn btn-primary">Codebase</a>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#movierankModal">Demo</button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#movierank-doc-Modal">Documentation</button>
                                         <a href="https://movierank.herokuapp.com/" target="_blank" class="btn btn-success">Live Project</a>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#movierank-demo-Modal">Demo</button>
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">Built with: JavaScript, Node.js, Express.js, Postgres, Bootstrap, and Heroku</small>
                                     </div>
                                     </div>
-                                    <div class="modal fade" id="movierankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="movierank-demo-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -199,6 +200,68 @@ and open the template in the editor.
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="movierank-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Inspiration</h5>
+                                                <p>
+                                                    Movie Rank was built as a final project for my database class. The project served as a way to showcase my new knowledge of databases.
+                                                </p>
+                                                <h5>What it Does</h5>
+                                                <p>
+                                                    Movie Rank allows users to search for movie information and rate movies. Below is a high level overview of Movie Rank’s features. 
+                                                    <ul>
+                                                        <li>User account creation</li>
+                                                        <li>User authentication</li>
+                                                        <li>Authenticated users can rate movies</li>
+                                                        <li>Authenticated users can edit previous ratings</li>
+                                                        <li>Users can search for movies</li>
+                                                        <li>Persistent login</li>
+                                                        <li>Return to previous screen after login</li>
+                                                    </ul>  
+                                                </p>
+                                                
+                                                <h5>Implementation</h5>
+                                                <p>
+                                                    The project was implemented using JavaScript, Node.js, Express.js, Bootstrap, and PostgreSQL. The main focus of this project was on creating the database. The secondary focus was user experience. Below is the entity relationship diagram and the database model.
+                                                </p>
+                                                <figure>
+                                                    <img src="images/ERD_Final.png" width="720" height="1000">
+                                                    <figcaption>Entitry Relation Diagram (ERD)</figcaption>
+                                                    
+                                                </figure>
+                                                <figure>
+                                                        <img src="images/DBModelDiagram.png" width="720" height="1000">
+                                                        <figcaption>Database Model</figcaption>
+                                                        
+                                                    </figure>
+                                                
+                                                <h5>Challenges & Issues</h5>
+                                                <p>
+                                                    Initially the database was developed using MySQL. 
+                                                    However, for deployment the database needed to be PostgreSQL. 
+                                                    To fix this issue I used a tool, pgloader, to load the MySQL data into PostgreSQL.
+                                                </p>
+                                                <h5>What I learned</h5>
+                                                <p>
+                                                    I am happy with the way the project turned out in terms of code quality. 
+                                                    The code is precise and self-documenting. 
+                                                    I spent a fair amount of time making design decisions and focusing on clean code. 
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
