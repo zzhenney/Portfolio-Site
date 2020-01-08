@@ -387,6 +387,85 @@ and open the template in the editor.
                                         <h5 class="card-title">Bytecode Interpreter</h5>
                                         <p class="card-text">For a class project I implemented a bytecode interpreter for the mock language "X" which was provided by the professor. This project was an excercise in text parsing as well as using various data stuctures such as Stacks, HashMaps, and ArrayLists</p>
                                         <a href="https://github.com/zzhenney/interpreter" target="_blank" class="btn btn-primary">Codebase</a>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bytecode-doc-Modal">Documentation</button>
+                                    </div>
+                                    <div class="modal fade" id="bytecode-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Inspiration</h5>
+                                                    <p>
+                                                        This a project I completed for my software engineering course while in school. 
+                                                        This project served as an educational experience into how build interpreters as well as software engineering principles (i.e. S.O.L.I.D.) 
+                                                    </p>
+                                                    <h5>What it Does</h5>
+                                                    <p>
+                                                       This bytecode interpreter accepts a list of bytecode instructions as the input. 
+                                                       The interpreter then parses and runs the instructions and outputs the result of the input bytecode program.
+    
+                                                    </p>
+                                                    
+                                                    <h5>Implementation</h5>
+                                                    <p>
+                                                        The main components of the program can be divided into 6 parts. 
+                                                        These parts include the Interpreter, ByteCodeLoader, Program, VirtualMachine, and RunTimeStack classes as well as the resolveAddrs method within the Program class. 
+                                                        The general flow of the program is given below by a simplified UML diagram (fig. 1)
+                                                    </p>
+                                                    <figure>
+                                                        <img src="images/ProgramFlow.png">
+                                                        <figcaption>fig. 1</figcaption>
+                                                    </figure>
+                                                    <p>
+                                                        The ByteCodeLoader, resolveAddress method (found in the Program class), RunTimeStack, VirtualMachine were implemented first. 
+                                                        The purpose of the ByteCodeLoader is to translate the commands read in from the .x.cod files and initiate the proper ByteCode subclass. 
+                                                        This was accomplisted via a StringTokenizer to separate the individual commands, a call to the CodeTable HashMap, and Object.Class’s .newInstance() method. 
+                                                        Once a new instance of the bytecode is created, it is passed to the resolveAddrs() method.
+                                                    </p>
+                                                    <p>
+                                                        The resolveAddrs() method’s implementation is dependent on the AddressResolver interface. 
+                                                        Any ByteCode subclass that requires an address resolution implements the AddressResolver interface. 
+                                                        By using the interface, the resolveAddrs() method is easily able to check if the passed bytecode requires address resolution. 
+                                                        If it does then address is resolved via the interface’s setTargetAddr() and getLabel() methods. 
+                                                        By using the interface and a HashMap for the labels I was able to reduce the function from  θ(n^2 ) to θ(n).
+                                                    </p>
+                                                    <p>
+                                                        The implementation of the VirtualMachine and RunTimeStack classes are pretty straight forward. 
+                                                        Any stack manipulations done by the VirtualMachine are done by using RunTimeStack’s methods upon the RunTimeStack object runStack within the VirtualMachine object.
+                                                    </p>
+                                                    <figure>
+                                                        <img src="images/pop.png">
+                                                        <figcaption>fig. 2</figcaption>
+                                                    </figure>
+                                                    <p>
+                                                        Similar to the VirtualMachine class, the ByteCode subclasses are able to manipulate the RunTimeStack via the VirtualMachine’s methods. 
+                                                        This encapsulation prevents the ByteCode subclasses from having direct access to the RunTimeStack. 
+                                                        Figure 2 above provides a basic representation of how PopCode manipulates the stack.
+                                                    </p>
+                                                    
+                                                    <h5>Challenges & Issues</h5>
+                                                    <p>
+                                                        Implementing the DUMP bytecode proved to be harder than I thought. This was one of the major pain points during the project as it was very time consuming. I could have significantly cut down the development time if I had handwritten the code first. Instead I spent a considerable amount of time trying to hack it together. I kept finding myself stuck in an infinite or throwing uncommon exceptions. Once I turned away from my computer and wrote out an algorithm I was able to implement it correctly.
+                                                    </p>
+                                                    <h5>What I learned</h5>
+                                                    <p>
+                                                        I learned the value of picking the correct data structure for the job. For example, using a HashMap to store bytecode labels greatly improved the time complexity of looking up bytecode instructions.
+                                                    </p>
+                                                    <p>
+                                                        Next time I would put more emphasis on creating helper functions. There are some areas in the code that could be cleaned up with smaller functions. 
+                                                            
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">Built with: Java, Netbeans, JUnit</small>
