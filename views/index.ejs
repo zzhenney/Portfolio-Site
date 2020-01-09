@@ -68,7 +68,7 @@ and open the template in the editor.
                     <div class='center-content'>
                         <div class="col-12">
                             <div class="card-deck">
-                                
+                                <!-- Webserver -->
                                 <div class="row">
                                 
                                     <div class="card">
@@ -170,6 +170,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                                 <br>
+                                <!-- Movie Rank -->
                                 <div class="row">
                                     <div class="card">
                                     <div class="card-body">
@@ -178,7 +179,8 @@ and open the template in the editor.
                                         <a href="https://github.com/zzhenney/MovieRank" target="_blank" class="btn btn-primary">Codebase</a>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#movierank-doc-Modal">Documentation</button>
                                         <a href="https://movierank.herokuapp.com/" target="_blank" class="btn btn-success">Live Project</a>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#movierank-demo-Modal">Demo</button>
+                                        <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#movierank-demo-Modal">Demo</button> -->
+                                        <a href="https://player.vimeo.com/video/357020238" target="_blank" class="btn btn-warning">Demo</a>
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">Built with: JavaScript, Node.js, Express.js, Postgres, Bootstrap, and Heroku</small>
@@ -195,7 +197,7 @@ and open the template in the editor.
                                                 </div>
                                                 <div class="modal-body">
                                                     <h5>Demo</h5>
-                                                    <iframe src="https://player.vimeo.com/video/357020238" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                                    <iframe id="movierank-demo-iframe" src="https://player.vimeo.com/video/357020238" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -267,6 +269,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                                 <br>
+                                <!-- caltrain -->
                                 <div class="row">
                         
                                         <div class="card">
@@ -347,6 +350,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                                 <br>
+                                <!-- Smart Mirror Dash -->
                                 <div class="row">
                             
                                         <div class="card">
@@ -364,6 +368,7 @@ and open the template in the editor.
                             
                                 </div>
                                 <br>
+                                <!-- Infinite image -->
                                 <div class="row">
                                     <div class="card">
                                     <div class="card-body">
@@ -379,7 +384,7 @@ and open the template in the editor.
                                 </div>
 
                                 <br>
-                            
+                                <!-- Interpreter -->
                                 <div class="row">
                             
                                     <div class="card">
@@ -543,7 +548,11 @@ and open the template in the editor.
                   topOffset: 0           
                 }); });
     </script>
-    
+    <script>
+        $("#movierank-demo-Modal").on('hidden.bs.modal', function (e) {
+            $("#movierank-demo-iframe").attr("src", $("#movierank-demo-iframe").attr("src"));
+        });
+    </script>
 			
  
     
