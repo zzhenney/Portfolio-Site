@@ -83,92 +83,92 @@ and open the template in the editor.
                                         </div>
                                     </div>
                                     
-                            
-                                </div>
-                                
-                                <div class="modal fade" id="webserverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h5>Inspiration</h5>
-                                                <p>
-                                                    The purpose of this project was to learn about the HyperText Transfer Protocol (HTTP) and the inner workings of web servers.
-                                                    It also provided an opportunity to practice my software development skills.
-                                                </p>
-                                                <h5>What it Does</h5>
-                                                <p>
-                                                    This web server can handle a subset of HTTP requests and responses (fig. 1). 
-                                                    The server can also handle multiple simultaneous requests via multithreading. 
-                                                    Below, is a high level overview of the web server’s features. 
-                                                    <ul>
-                                                        <li>Read, and store, standard conﬁguration ﬁles for use in responding to client requests</li>
-                                                        <li>Parse HTTP Requests</li>
-                                                        <li>Generate and send HTTP Responses</li>
-                                                        <li>Respond to multiple simultaneous requests through the use of threads</li>
-                                                        <li>Execute server side processes to handle server side scripts</li>
-                                                        <li>Support simple authentication</li>
-                                                        <li>Support simple caching</li>
-                                                        <li>Logging</li>
-                                                    </ul>  
-                                                </p>
-                                                <figure>
-                                                    <img src="images/req_res_table.png">
-                                                    <figcaption>fig. 1</figcaption>
+                                    <div class="modal fade" id="webserverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Inspiration</h5>
+                                                    <p>
+                                                        The purpose of this project was to learn about the HyperText Transfer Protocol (HTTP) and the inner workings of web servers.
+                                                        It also provided an opportunity to practice my software development skills.
+                                                    </p>
+                                                    <h5>What it Does</h5>
+                                                    <p>
+                                                        This web server can handle a subset of HTTP requests and responses (fig. 1). 
+                                                        The server can also handle multiple simultaneous requests via multithreading. 
+                                                        Below, is a high level overview of the web server’s features. 
+                                                        <ul>
+                                                            <li>Read, and store, standard conﬁguration ﬁles for use in responding to client requests</li>
+                                                            <li>Parse HTTP Requests</li>
+                                                            <li>Generate and send HTTP Responses</li>
+                                                            <li>Respond to multiple simultaneous requests through the use of threads</li>
+                                                            <li>Execute server side processes to handle server side scripts</li>
+                                                            <li>Support simple authentication</li>
+                                                            <li>Support simple caching</li>
+                                                            <li>Logging</li>
+                                                        </ul>  
+                                                    </p>
+                                                    <figure>
+                                                        <img src="images/req_res_table.png">
+                                                        <figcaption>fig. 1</figcaption>
+                                                        
+                                                    </figure>
+                                                    <h5>Implementation</h5>
+                                                    <p>
+                                                        The web server was implemented in Java 8.0. Tools used during development include Netbeans IDE 8.2 and Postman 6.7.4.
+                                                    </p>
+                                                    <p>
+                                                        The entry point to the web server is the main method in WebServer.java. The server listens to port 8080 by default. 
+                                                        WebServer is responsible for setting its configuration via the httpd.conf and MIME.types files located in conf folder located in the server’s root directory. 
+                                                        The HttpdConf and MimeTypes classes are used by the server to load the configurations and both utilize HashMaps to store their respectful headers. 
+                                                        Each is also responsible for the parsing of their respected files. 
+                                                        Both HttpdConf and MimeTypes extend ConfigurationReader, a class used to read a file and provide scanning logic, to help in the parsing. 
+                                                    </p>
+                                                    <p>
+                                                        The server utilizes the ExecutorService interface to manage a fixed thread pool of 10 threads, allowing the server to handle multiple simultaneous requests. 
+                                                        The Worker class implements Runnable and is passed to the fixed thread pool for execution. 
+                                                        The Worker expects to be passed a Socket, HttpdConf, and MimeType objects. 
+                                                        The Socket is used with Worker to facilitate communication between the client and server. 
+                                                    </p>
+                                                    <p>
+                                                        When WebServer receives a request, the Request class is responsible for handling the parsing and extracting the properly formatted HTTP request’s information. 
+                                                        Worker also utilizes a ResponseFactory to dynamically create a response to a request. 
+                                                        All Responses extend from an abstract Response class. 
+                                                        The Response class provides both abstract and implemented methods. 
+                                                        The ResponseFactory verifies if a resource is protected and if the resource exists and then based on the appropriate response code, generates 
+                                                        the appropriate Response to be sent to the client. 
+                                                        Once a request is sent the Logger class handles the logging of the response.
+                                                    </p>
                                                     
-                                                </figure>
-                                                <h5>Implementation</h5>
-                                                <p>
-                                                    The web server was implemented in Java 8.0. Tools used during development include Netbeans IDE 8.2 and Postman 6.7.4.
-                                                </p>
-                                                <p>
-                                                    The entry point to the web server is the main method in WebServer.java. The server listens to port 8080 by default. 
-                                                    WebServer is responsible for setting its configuration via the httpd.conf and MIME.types files located in conf folder located in the server’s root directory. 
-                                                    The HttpdConf and MimeTypes classes are used by the server to load the configurations and both utilize HashMaps to store their respectful headers. 
-                                                    Each is also responsible for the parsing of their respected files. 
-                                                    Both HttpdConf and MimeTypes extend ConfigurationReader, a class used to read a file and provide scanning logic, to help in the parsing. 
-                                                </p>
-                                                <p>
-                                                    The server utilizes the ExecutorService interface to manage a fixed thread pool of 10 threads, allowing the server to handle multiple simultaneous requests. 
-                                                    The Worker class implements Runnable and is passed to the fixed thread pool for execution. 
-                                                    The Worker expects to be passed a Socket, HttpdConf, and MimeType objects. 
-                                                    The Socket is used with Worker to facilitate communication between the client and server. 
-                                                </p>
-                                                <p>
-                                                    When WebServer receives a request, the Request class is responsible for handling the parsing and extracting the properly formatted HTTP request’s information. 
-                                                    Worker also utilizes a ResponseFactory to dynamically create a response to a request. 
-                                                    All Responses extend from an abstract Response class. 
-                                                    The Response class provides both abstract and implemented methods. 
-                                                    The ResponseFactory verifies if a resource is protected and if the resource exists and then based on the appropriate response code, generates 
-                                                    the appropriate Response to be sent to the client. 
-                                                    Once a request is sent the Logger class handles the logging of the response.
-                                                </p>
-                                                
-                                                <h5>Challenges & Issues</h5>
-                                                <p>
-                                                    During development there was an issue when parsing file paths for htaccess detection. 
-                                                    I found that the leading “/” was being removed from the path. 
-                                                    As a result the htaccess file was never detected. 
-                                                    This was caused by using Java’s Path substring method. 
-                                                    I fixed this by using Java’s Path getParent method instead.
-                                                </p>
-                                                <h5>What I learned</h5>
-                                                <p>Through this project I gained the understanding of webservers as well as HTTP</p>
-                                                <p>Initially, this seemed like a daunting project. After breaking down the problem into smaller pieces it became much more manageable.</p>
-                                                <p>Postman is a crucial tool for quickly testing APIs. Without Postman the development time for this project would have been longer. I will definitely use Postman in the future when working with APIs.</p>
-                                                <p>In my courses prior to this project we had breifly discussed design patterns. This was my first time using the Factory pattern. Being able to apply the pattern to an actual project made the concept seem less abstract. </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <h5>Challenges & Issues</h5>
+                                                    <p>
+                                                        During development there was an issue when parsing file paths for htaccess detection. 
+                                                        I found that the leading “/” was being removed from the path. 
+                                                        As a result the htaccess file was never detected. 
+                                                        This was caused by using Java’s Path substring method. 
+                                                        I fixed this by using Java’s Path getParent method instead.
+                                                    </p>
+                                                    <h5>What I learned</h5>
+                                                    <p>Through this project I gained the understanding of webservers as well as HTTP</p>
+                                                    <p>Initially, this seemed like a daunting project. After breaking down the problem into smaller pieces it became much more manageable.</p>
+                                                    <p>Postman is a crucial tool for quickly testing APIs. Without Postman the development time for this project would have been longer. I will definitely use Postman in the future when working with APIs.</p>
+                                                    <p>In my courses prior to this project we had breifly discussed design patterns. This was my first time using the Factory pattern. Being able to apply the pattern to an actual project made the concept seem less abstract. </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                
                                 <br>
                                 <!-- Movie Rank -->
                                 <div class="row">
@@ -205,74 +205,78 @@ and open the template in the editor.
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal fade" id="movierank-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h5>Inspiration</h5>
-                                                <p>
-                                                    Movie Rank was built as a final project for my database class. The project served as a way to showcase my new knowledge of databases.
-                                                </p>
-                                                <h5>What it Does</h5>
-                                                <p>
-                                                    Movie Rank allows users to search for movie information and rate movies. Below is a high level overview of Movie Rank’s features. 
-                                                    <ul>
-                                                        <li>User account creation</li>
-                                                        <li>User authentication</li>
-                                                        <li>Authenticated users can rate movies</li>
-                                                        <li>Authenticated users can edit previous ratings</li>
-                                                        <li>Users can search for movies</li>
-                                                        <li>Persistent login</li>
-                                                        <li>Return to previous screen after login</li>
-                                                    </ul>  
-                                                </p>
-                                                
-                                                <h5>Implementation</h5>
-                                                <p>
-                                                    The project was implemented using JavaScript, Node.js, Express.js, Bootstrap, and PostgreSQL. The main focus of this project was on creating the database. The secondary focus was user experience. Below is the entity relationship diagram and the database model.
-                                                </p>
-                                                <figure>
-                                                    <img src="images/ERD_Final.png" width="720" height="1000">
-                                                    <figcaption>Entity Relation Diagram (ERD)</figcaption>
+                                    <div class="modal fade" id="movierank-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Inspiration</h5>
+                                                    <p>
+                                                        Movie Rank was built as a final project for my database class. The project served as a way to showcase my new knowledge of databases.
+                                                    </p>
+                                                    <h5>What it Does</h5>
+                                                    <p>
+                                                        Movie Rank allows users to search for movie information and rate movies. Below is a high level overview of Movie Rank’s features. 
+                                                        <ul>
+                                                            <li>User account creation</li>
+                                                            <li>User authentication</li>
+                                                            <li>Authenticated users can rate movies</li>
+                                                            <li>Authenticated users can edit previous ratings</li>
+                                                            <li>Users can search for movies</li>
+                                                            <li>Persistent login</li>
+                                                            <li>Return to previous screen after login</li>
+                                                        </ul>  
+                                                    </p>
                                                     
-                                                </figure>
-                                                <figure>
-                                                        <img src="images/DBModelDiagram.png" width="720" height="1000">
-                                                        <figcaption>Database Model</figcaption>
+                                                    <h5>Implementation</h5>
+                                                    <p>
+                                                        The project was implemented using JavaScript, Node.js, Express.js, Bootstrap, and PostgreSQL. The main focus of this project was on creating the database. The secondary focus was user experience. Below is the entity relationship diagram and the database model.
+                                                    </p>
+                                                    <figure>
+                                                        <a href="images/ERD_Final.png" target="_blank">
+                                                            <img src="images/ERD_Final.png">
+                                                            <figcaption>Entity Relation Diagram (ERD)</figcaption>
+                                                        </a>
                                                         
                                                     </figure>
-                                                
-                                                <h5>Challenges & Issues</h5>
-                                                <p>
-                                                    Initially the database was developed using MySQL. 
-                                                    However, for deployment the database needed to be PostgreSQL. 
-                                                    To fix this issue I used a tool, pgloader, to load the MySQL data into PostgreSQL.
-                                                </p>
-                                                <h5>What I learned</h5>
-                                                <p>
-                                                    I am happy with the way the project turned out in terms of code quality. 
-                                                    The code is precise and self-documenting. 
-                                                    I spent a fair amount of time making design decisions and focusing on clean code. 
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <figure>
+                                                        <a href="images/DBModelDiagram.png" target="_blank">
+                                                            <img src="images/DBModelDiagram.png">
+                                                            <figcaption>Database Model</figcaption>
+                                                        </a>     
+                                                    </figure>
+                                                    
+                                                    <h5>Challenges & Issues</h5>
+                                                    <p>
+                                                        Initially the database was developed using MySQL. 
+                                                        However, for deployment the database needed to be PostgreSQL. 
+                                                        To fix this issue I used a tool, pgloader, to load the MySQL data into PostgreSQL.
+                                                    </p>
+                                                    <h5>What I learned</h5>
+                                                    <p>
+                                                        I am happy with the way the project turned out in terms of code quality. 
+                                                        The code is precise and self-documenting. 
+                                                        I spent a fair amount of time making design decisions and focusing on clean code. 
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <br>
                                 <!-- caltrain -->
                                 <div class="row">
                         
-                                        <div class="card">
+                                    <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Magic Mirror Caltrain Module</h5>
                                             <p class="card-text">A Caltrain Module for the Magic Mirror open source project. The module provides northbound and/or southbound departure times or estimated times of departure for the selected Caltrain station.</p>
@@ -283,72 +287,74 @@ and open the template in the editor.
                                         <div class="card-footer">
                                             <small class="text-muted">Built with: JavaScript, MagicMirror open source project</small>
                                         </div>
-                                        </div>
-                            
-                                </div>
-                                <div class="modal fade" id="mmmcaltrain-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h5>Inspiration</h5>
-                                                <p>
-                                                        After creating my own smart mirror web app (see portfolio) I stumbled upon the Magic Mirror open source project. 
-                                                        I noticed that a Caltrain times module had not been created yet. 
-                                                        I saw this as a perfect opportunity to get involved in the open source community.
-                                                </p>
-                                                <h5>What it Does</h5>
-                                                <p>
-                                                        The Caltrain module provides departure times or estimated times of departure (etd) for the selected Caltrain station. 
-                                                        Northbound and Southbound times can be displayed or hidden. Caltrain data is obtained via API calls to 511.org.
-                                                        Below is a high level overview of the features. 
-                                                    <ul>
-                                                        <li>User can set station</li>
-                                                        <li>User can select northbound and/or southbound times</li>
-                                                        <li>Users can display departure time or estimated time til departure (countdown)</li>
-                                                        <li>User can display times in 24 or 12 hour</li>
-                                                    </ul>  
-
-                                                </p>
-                                                <figure>
-                                                    <img src="images/etd.png">
-                                                    <figcaption>Estimated Time til Departure</figcaption>     
-                                                </figure>
-                                                <figure>
-                                                    <img src="images/departure_times.png">
-                                                    <figcaption>Departure Times</figcaption>
-                                                </figure>
-                                                <h5>Implementation</h5>
-                                                <p>
-                                                    Implementing the project was fairly straight forward after reading the Magic Mirror module documentation. 
-                                                    There are two main files that compose the project. 
-                                                    The first being MMM-Caltrain.js, which provides the presentation layer. 
-                                                    The second being node-helper.js, which handles the external api calls to 511.org.                                                </p>
-                                                
-                                                <h5>Challenges & Issues</h5>
-                                                <p>
-                                                    One challenge I had was dealing with UTC time conversions. 
-                                                    Initially I thought I could handle the conversions myself. 
-                                                    However, I ended up using a third party library to cut down the development time. 
-                                                    Something about not reinventing the wheel.
-                                                </p>
-                                                <h5>What I learned</h5>
-                                                <p>
-                                                    One of my biggest takeaways from this project was learning how to create and work with git submodules. 
-                                                    This was a great learning experience in working on larger projects.
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                    <div class="modal fade" id="mmmcaltrain-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Inspiration</h5>
+                                                    <p>
+                                                            After creating my own smart mirror web app (see portfolio) I stumbled upon the Magic Mirror open source project. 
+                                                            I noticed that a Caltrain times module had not been created yet. 
+                                                            I saw this as a perfect opportunity to get involved in the open source community.
+                                                    </p>
+                                                    <h5>What it Does</h5>
+                                                    <p>
+                                                            The Caltrain module provides departure times or estimated times of departure (etd) for the selected Caltrain station. 
+                                                            Northbound and Southbound times can be displayed or hidden. Caltrain data is obtained via API calls to 511.org.
+                                                            Below is a high level overview of the features. 
+                                                        <ul>
+                                                            <li>User can set station</li>
+                                                            <li>User can select northbound and/or southbound times</li>
+                                                            <li>Users can display departure time or estimated time til departure (countdown)</li>
+                                                            <li>User can display times in 24 or 12 hour</li>
+                                                        </ul>  
+    
+                                                    </p>
+                                                    <figure>
+                                                        <img src="images/etd.png">
+                                                        <figcaption>Estimated Time til Departure</figcaption>     
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/departure_times.png">
+                                                        <figcaption>Departure Times</figcaption>
+                                                    </figure>
+                                                    <h5>Implementation</h5>
+                                                    <p>
+                                                        Implementing the project was fairly straight forward after reading the Magic Mirror module documentation. 
+                                                        There are two main files that compose the project. 
+                                                        The first being MMM-Caltrain.js, which provides the presentation layer. 
+                                                        The second being node-helper.js, which handles the external api calls to 511.org.                                                </p>
+                                                    
+                                                    <h5>Challenges & Issues</h5>
+                                                    <p>
+                                                        One challenge I had was dealing with UTC time conversions. 
+                                                        Initially I thought I could handle the conversions myself. 
+                                                        However, I ended up using a third party library to cut down the development time. 
+                                                        Something about not reinventing the wheel.
+                                                    </p>
+                                                    <h5>What I learned</h5>
+                                                    <p>
+                                                        One of my biggest takeaways from this project was learning how to create and work with git submodules. 
+                                                        This was a great learning experience in working on larger projects.
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                        
+                            
                                 </div>
+                                
                                 <br>
                                 <!-- Smart Mirror Dash -->
                                 <div class="row">
@@ -388,20 +394,26 @@ and open the template in the editor.
                                 <div class="row">
                             
                                     <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Bytecode Interpreter</h5>
-                                        <p class="card-text">For a class project I implemented a bytecode interpreter for the mock language "X" which was provided by the professor. This project was an excercise in text parsing as well as using various data stuctures such as Stacks, HashMaps, and ArrayLists</p>
-                                        <a href="https://github.com/zzhenney/interpreter" target="_blank" class="btn btn-primary">Codebase</a>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bytecode-doc-Modal">Documentation</button>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Bytecode Interpreter</h5>
+                                            <p class="card-text">For a class project I implemented a bytecode interpreter for the mock language "X" which was provided by the professor. This project was an excercise in text parsing as well as using various data stuctures such as Stacks, HashMaps, and ArrayLists</p>
+                                            <a href="https://github.com/zzhenney/interpreter" target="_blank" class="btn btn-primary">Codebase</a>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bytecode-doc-Modal">Documentation</button>
+                                        </div>
+                                        
+                                    
+                                        <div class="card-footer">
+                                            <small class="text-muted">Built with: Java, Netbeans, JUnit</small>
+                                        </div>
                                     </div>
                                     <div class="modal fade" id="bytecode-doc-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
-                                              <div class="modal-content">
+                                            <div class="modal-content">
                                                 <div class="modal-header">
-                                                  <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h5 class="modal-title" id="exampleModalLabel">Web Server</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
-                                                  </button>
+                                                </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <h5>Inspiration</h5>
@@ -411,8 +423,8 @@ and open the template in the editor.
                                                     </p>
                                                     <h5>What it Does</h5>
                                                     <p>
-                                                       This bytecode interpreter accepts a list of bytecode instructions as the input. 
-                                                       The interpreter then parses and runs the instructions and outputs the result of the input bytecode program.
+                                                    This bytecode interpreter accepts a list of bytecode instructions as the input. 
+                                                    The interpreter then parses and runs the instructions and outputs the result of the input bytecode program.
     
                                                     </p>
                                                     
@@ -467,15 +479,10 @@ and open the template in the editor.
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Built with: Java, Netbeans, JUnit</small>
-                                    </div>
-                                    </div>
                                 </div>
                             
                             </div>
@@ -489,7 +496,7 @@ and open the template in the editor.
                 	<br>
                 	<h1 class='sectitle'>Resume</h1>
                 	<div class='center-content'> 
-	                    <embed src="images/Zac_Henney_Resume.pdf" width="640" height="960" type="application/pdf">
+	                    <embed src="images/Zac_Henney_Resume.pdf" width="100%" height="960" type="application/pdf">
 	                </div>
                 </div>   
             </section>
